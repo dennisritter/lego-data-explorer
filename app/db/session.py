@@ -41,7 +41,7 @@ def get_db() -> Generator[Session, None, None]:
 
 def get_db_dependency() -> Generator[Session, None, None]:
     """
-    Dependency-Funktion für FastAPI-Endpunkte.
+    Dependency-Function for FastAPI-endpoints.
     """
     with get_db() as session:
         yield session
