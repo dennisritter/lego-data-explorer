@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 from typing import Generator
 
-from sqlalchemy import create_engine
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.core.config import settings
@@ -45,3 +45,9 @@ def get_db_dependency() -> Generator[Session, None, None]:
     """
     with get_db() as session:
         yield session
+
+
+def get_db_metadata():
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    return metadata
