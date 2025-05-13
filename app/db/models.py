@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy import ForeignKey, func
 from sqlalchemy.dialects.postgresql import TIMESTAMP
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
 Base = declarative_base()
 
@@ -40,5 +40,5 @@ class Theme(Base, TimestampMixin):
     theme_name: Mapped[str] = mapped_column(nullable=False)
     parent_theme_id: Mapped[int] = mapped_column(ForeignKey("themes.theme_id"), nullable=True)
 
-    parent = relationship("Theme", back_populates="children")
-    children = relationship("Theme", back_populates="parent")
+    # parent = relationship("Theme", back_populates="children")
+    # children = relationship("Theme", back_populates="parent")
