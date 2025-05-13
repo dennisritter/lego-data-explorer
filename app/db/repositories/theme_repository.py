@@ -1,9 +1,14 @@
+from app.db.models import Theme
+from app.db.session import Session
+
+
 class ThemeRepository:
-    def __init__(self, db_session):
-        self.db = db_session
+    def __init__(self, session: Session):
+        self.session = session
 
-    def get_root_themes(self):
-        pass
+    def get_all(self):
+        themes = self.session.query(Theme).all()
+        return themes
 
-    def get_themes_by_year(self, year):
+    def get_by_id(self):
         pass
