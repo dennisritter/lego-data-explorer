@@ -11,4 +11,3 @@ def test_db() -> None:
             session.execute(select(1))
     except Exception as e:
         raise e
-        raise e
